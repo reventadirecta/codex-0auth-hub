@@ -1,0 +1,78 @@
+{
+  "seedGroups": [
+    {
+      "id": "local-ai",
+      "label": "Local AI",
+      "terms": [
+        "Ollama",
+        "LM Studio",
+        "local AI",
+        "LLM local",
+        "IA local"
+      ],
+      "language": "es",
+      "region": "ES",
+      "priority": "A"
+    },
+    {
+      "id": "ai-agents",
+      "label": "AI Agents",
+      "terms": [
+        "Hermes Agent",
+        "Agent Zero",
+        "OpenClaw",
+        "Codex",
+        "agentes autonomos"
+      ],
+      "language": "es",
+      "region": "ES",
+      "priority": "A"
+    },
+    {
+      "id": "comfyui-ai-video",
+      "label": "ComfyUI / AI Video",
+      "terms": [
+        "ComfyUI",
+        "AI video generation",
+        "generacion de video IA",
+        "LTX Video",
+        "Runway"
+      ],
+      "language": "es",
+      "region": "ES",
+      "priority": "A"
+    },
+    {
+      "id": "ai-hardware",
+      "label": "AI Hardware",
+      "terms": [
+        "GPU para IA",
+        "VRAM IA",
+        "RTX IA local",
+        "hardware IA",
+        "GPU barata IA"
+      ],
+      "language": "es",
+      "region": "ES",
+      "priority": "A"
+    }
+  ],
+  "genericPenaltyTerms": [
+    "AI",
+    "IA",
+    "tech",
+    "tutorial",
+    "shorts",
+    "viral",
+    "tools",
+    "gratis"
+  ],
+  "negativeTerms": [
+    "crypto",
+    "trading",
+    "casino",
+    "betting"
+  ],
+  "defaultRegion": "ES",
+  "defaultLanguage": "es"
+}

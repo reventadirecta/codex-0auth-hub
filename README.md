@@ -214,6 +214,14 @@ Use a specific candidate date:
 python -m scripts.competitor_content_scan --date 2026-06-05
 ```
 
+YouTube tag intelligence:
+
+```powershell
+python -m scripts.youtube_tag_intelligence
+```
+
+This flow generates a local scored base of YouTube tags, hashtags, search phrases, and topic entities on a 1-100 scale without touching real videos.
+
 ## Current Constraints
 
 - Google Custom Search also needs a Programmable Search Engine ID in `engineId`.
