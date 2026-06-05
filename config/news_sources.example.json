@@ -1,0 +1,67 @@
+{
+  "sourceGroups": [
+    {
+      "id": "official-ai",
+      "label": "Official AI sources",
+      "priority": "A",
+      "sources": [
+        {
+          "name": "OpenAI Blog",
+          "type": "official_blog",
+          "url": "https://openai.com/news/",
+          "trustLevel": "high",
+          "topics": ["openai", "codex", "agents", "chatgpt"]
+        },
+        {
+          "name": "Google AI Blog",
+          "type": "official_blog",
+          "url": "https://blog.google/technology/ai/",
+          "trustLevel": "high",
+          "topics": ["google", "gemini", "ai"]
+        }
+      ]
+    },
+    {
+      "id": "open-source-ai",
+      "label": "Open source AI sources",
+      "priority": "A",
+      "sources": [
+        {
+          "name": "GitHub Trending",
+          "type": "github_trending",
+          "url": "https://github.com/trending",
+          "trustLevel": "medium",
+          "topics": ["open source", "github", "repositories"]
+        },
+        {
+          "name": "Hugging Face Models",
+          "type": "model_hub",
+          "url": "https://huggingface.co/models",
+          "trustLevel": "medium",
+          "topics": ["hugging face", "models", "llm", "open source"]
+        }
+      ]
+    },
+    {
+      "id": "creator-tech",
+      "label": "Creator and tooling sources",
+      "priority": "B",
+      "sources": [
+        {
+          "name": "YouTube Help",
+          "type": "documentation",
+          "url": "https://support.google.com/youtube/",
+          "trustLevel": "high",
+          "topics": ["youtube", "creator", "channel"]
+        }
+      ]
+    }
+  ],
+  "defaultLanguage": "es",
+  "defaultRegion": "ES",
+  "blockedSourceTypes": [
+    "content_farm",
+    "unknown_scraper",
+    "ai_generated_spam"
+  ]
+}

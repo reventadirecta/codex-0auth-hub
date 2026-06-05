@@ -184,6 +184,14 @@ Use a specific candidate date:
 python -m scripts.video_rewrite_proposals --date 2026-06-05
 ```
 
+Blog newsroom:
+
+```powershell
+python -m scripts.blog_newsroom
+```
+
+Generates verified local blog news drafts with source discovery, claim verification, fact checking, humanized writing and SEO packaging. It does not publish to Blogger automatically.
+
 Discover competitor channels from the latest rewrite candidates:
 
 ```powershell

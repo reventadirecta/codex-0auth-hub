@@ -1,0 +1,27 @@
+{
+  "defaultBlog": "ando-en-ia",
+  "defaultTopic": "codex-oauth-hub adds a calibrated YouTube tag intelligence workflow",
+  "language": "es",
+  "tone": "human, technical, clear",
+  "targetAudience": "Spanish-speaking creators, AI builders and technical users",
+  "publishMode": "local_draft_only",
+  "articleTypes": [
+    "news",
+    "explainer",
+    "technical_note",
+    "release_note",
+    "opinion_with_sources"
+  ],
+  "verificationPolicy": {
+    "minimumSourcesForStrongClaim": 2,
+    "officialSourceRequiredForProductClaims": true,
+    "allowSingleSourceClaims": true,
+    "singleSourceClaimsMustBeLabeled": true,
+    "forbidUnverifiedClaimsInHeadline": true
+  },
+  "output": {
+    "baseDir": "data/blog_newsroom",
+    "reportDir": "reports",
+    "articleDir": "data/blog_newsroom/articles"
+  }
+}
