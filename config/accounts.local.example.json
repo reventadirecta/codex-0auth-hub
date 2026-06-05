@@ -1,0 +1,87 @@
+{
+  "defaults": {
+    "googleClientSecretFile": "auto",
+    "tokenDir": "tokens"
+  },
+  "accounts": [
+    {
+      "id": "google-main",
+      "label": "Main Google account",
+      "provider": "google",
+      "services": {
+        "youtube": [
+          {
+            "id": "youtube-main",
+            "label": "Main YouTube channel",
+            "channelId": "",
+            "scopes": [
+              "https://www.googleapis.com/auth/youtube.readonly"
+            ]
+          }
+        ],
+        "youtube_data": [
+          {
+            "id": "youtube-data-main",
+            "label": "Main YouTube Data API v3 connection",
+            "channelId": "",
+            "tokenId": "youtube-main",
+            "apiKeyFile": "secrets/youtube_data_api_v3",
+            "scopes": [
+              "https://www.googleapis.com/auth/youtube.readonly"
+            ]
+          }
+        ],
+        "youtube_analytics": [
+          {
+            "id": "youtube-analytics-main",
+            "label": "Main YouTube Analytics connection",
+            "channelId": "",
+            "ids": "channel==MINE",
+            "scopes": [
+              "https://www.googleapis.com/auth/youtube.readonly",
+              "https://www.googleapis.com/auth/yt-analytics.readonly"
+            ]
+          }
+        ],
+        "youtube_reporting": [
+          {
+            "id": "youtube-reporting-main",
+            "label": "Main YouTube Reporting connection",
+            "channelId": "",
+            "scopes": [
+              "https://www.googleapis.com/auth/yt-analytics.readonly"
+            ]
+          }
+        ],
+        "blogger": [
+          {
+            "id": "blogger-main",
+            "label": "Main Blogger blog",
+            "blogId": "",
+            "scopes": [
+              "https://www.googleapis.com/auth/blogger"
+            ]
+          }
+        ],
+        "search": [
+          {
+            "id": "search-main",
+            "label": "Main Custom Search engine",
+            "engineId": "",
+            "apiKeyFile": "secrets/google_custom_search_api"
+          }
+        ],
+        "search_console": [
+          {
+            "id": "search-console-main",
+            "label": "Main Search Console property",
+            "siteUrl": "",
+            "scopes": [
+              "https://www.googleapis.com/auth/webmasters.readonly"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
