@@ -359,7 +359,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in priority_a_rows:
         actions.append(
             make_action(
-                "1. Prioridad A: acciones alineadas con el nuevo rumbo del canal.",
+                "2. Prioridad A: acciones alineadas con IA y contenido técnico.",
                 row["title"],
                 row["editorialCategory"],
                 "A",
@@ -376,7 +376,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in priority_b_rows:
         actions.append(
             make_action(
-                "2. Prioridad B: acciones virales compatibles que pueden atraer tráfico.",
+                "3. Prioridad B: acciones virales compatibles.",
                 row["title"],
                 row["editorialCategory"],
                 "B",
@@ -394,7 +394,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in priority_c_rows:
         actions.append(
             make_action(
-                "3. Prioridad C: contenido heredado o gaming que funciona, pero no debe dirigir la estrategia.",
+                "4. Prioridad C: contenido heredado.",
                 row["title"],
                 row["editorialCategory"],
                 "C",
@@ -411,7 +411,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in second_part_rows:
         actions.append(
             make_action(
-                "4. Vídeos que merecen segunda parte.",
+                "5. Vídeos que merecen segunda parte.",
                 row["title"],
                 row["editorialCategory"],
                 row["priorityBucket"],
@@ -428,7 +428,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in blogger_rows:
         actions.append(
             make_action(
-                "5. Vídeos que merecen artículo en Blogger.",
+                "6. Vídeos que merecen artículo en Blogger.",
                 row["title"],
                 row["editorialCategory"],
                 row["priorityBucket"],
@@ -445,7 +445,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in long_to_shorts_rows:
         actions.append(
             make_action(
-                "6. Vídeos largos que pueden generar shorts.",
+                "7. Vídeos largos que pueden generar shorts.",
                 row["title"],
                 row["editorialCategory"],
                 row["priorityBucket"],
@@ -463,7 +463,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in shorts_to_long_rows:
         actions.append(
             make_action(
-                "7. Shorts que pueden convertirse en vídeo largo.",
+                "8. Shorts que pueden convertirse en vídeo largo.",
                 row["title"],
                 row["editorialCategory"],
                 row["priorityBucket"],
@@ -480,7 +480,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in retitle_rows:
         actions.append(
             make_action(
-                "8. Vídeos que necesitan cambio de título.",
+                "9. Vídeos que necesitan cambio de título.",
                 row["title"],
                 row["editorialCategory"],
                 row["priorityBucket"],
@@ -498,7 +498,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for row in thumbnail_rows:
         actions.append(
             make_action(
-                "9. Vídeos que necesitan cambio de miniatura.",
+                "10. Vídeos que necesitan cambio de miniatura.",
                 row["title"],
                 row["editorialCategory"],
                 row["priorityBucket"],
@@ -516,7 +516,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for item in repeat_themes:
         actions.append(
             make_action(
-                "10. Temas que conviene repetir esta semana.",
+                "11. Temas que conviene repetir esta semana.",
                 item["theme"],
                 "tema_editorial",
                 "A",
@@ -533,7 +533,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
     for item in pause_themes:
         actions.append(
             make_action(
-                "11. Temas que conviene pausar.",
+                "12. Temas que conviene pausar.",
                 item["title"],
                 item["category"],
                 bucket_priority(item["category"]),
@@ -562,7 +562,7 @@ def build_actions(payload: dict[str, Any], diagnosis_paths: dict[str, Path], rep
         action_text = "Producir o reciclar pieza prioritaria" if row in priority_a_rows else "Ejecutar mejora editorial"
         actions.append(
             make_action(
-                "12. Plan de acción para los próximos 7 días.",
+                "13. Plan de acción para los próximos 7 días.",
                 row["title"],
                 row["editorialCategory"],
                 row["priorityBucket"],
@@ -596,21 +596,34 @@ def _render_action(action: dict[str, Any]) -> str:
 
 
 def generate_markdown_report(result: dict[str, Any]) -> str:
-    sections_order = [
-        "1. Prioridad A: acciones alineadas con el nuevo rumbo del canal.",
-        "2. Prioridad B: acciones virales compatibles que pueden atraer tráfico.",
-        "3. Prioridad C: contenido heredado o gaming que funciona, pero no debe dirigir la estrategia.",
-        "4. Vídeos que merecen segunda parte.",
-        "5. Vídeos que merecen artículo en Blogger.",
-        "6. Vídeos largos que pueden generar shorts.",
-        "7. Shorts que pueden convertirse en vídeo largo.",
-        "8. Vídeos que necesitan cambio de título.",
-        "9. Vídeos que necesitan cambio de miniatura.",
-        "10. Temas que conviene repetir esta semana.",
-        "11. Temas que conviene pausar.",
-        "12. Plan de acción para los próximos 7 días.",
-    ]
     actions = result["actions"]
+    summary_counts = {
+        "A": len([action for action in actions if action["priority"] == "A"]),
+        "B": len([action for action in actions if action["priority"] == "B"]),
+        "C": len([action for action in actions if action["priority"] == "C"]),
+    }
+    inferred_count = len([action for action in actions if action.get("inferred")])
+    strategic_categories = sorted(
+        {
+            action["editorialCategory"]
+            for action in actions
+            if action["priority"] == "A" and action["editorialCategory"] != "tema_editorial"
+        }
+    )
+    sections_order = [
+        "2. Prioridad A: acciones alineadas con IA y contenido técnico.",
+        "3. Prioridad B: acciones virales compatibles.",
+        "4. Prioridad C: contenido heredado.",
+        "5. Vídeos que merecen segunda parte.",
+        "6. Vídeos que merecen artículo en Blogger.",
+        "7. Vídeos largos que pueden generar shorts.",
+        "8. Shorts que pueden convertirse en vídeo largo.",
+        "9. Vídeos que necesitan cambio de título.",
+        "10. Vídeos que necesitan cambio de miniatura.",
+        "11. Temas que conviene repetir esta semana.",
+        "12. Temas que conviene pausar.",
+        "13. Plan de acción para los próximos 7 días.",
+    ]
     by_section: dict[str, list[dict[str, Any]]] = {}
     for action in actions:
         by_section.setdefault(action["section"], []).append(action)
@@ -621,6 +634,18 @@ def generate_markdown_report(result: dict[str, Any]) -> str:
         f"- Fuente principal: `{result['sourceDiagnosisJson']}`",
         f"- Informe base: `{result['sourceDiagnosisReport']}`",
         "- Objetivo: convertir el diagnóstico del canal en una cola editorial accionable, priorizando IA, IA local, agentes, Codex, ComfyUI, hardware IA y tutoriales técnicos.",
+        "",
+        "## 1. Resumen de oportunidades.",
+        "",
+        f"- Oportunidades prioridad A: {summary_counts['A']}",
+        f"- Oportunidades prioridad B: {summary_counts['B']}",
+        f"- Oportunidades prioridad C: {summary_counts['C']}",
+        f"- Recomendaciones inferidas: {inferred_count}",
+        (
+            "- Categorías estratégicas detectadas con tracción reciente: "
+            + (", ".join(f"`{category}`" for category in strategic_categories) if strategic_categories else "ninguna con suficiente señal")
+            + "."
+        ),
         "",
     ]
 
@@ -636,11 +661,13 @@ def generate_markdown_report(result: dict[str, Any]) -> str:
 
     lines.extend(
         [
-            "## Notas",
+            "## 14. Limitaciones del análisis.",
             "",
+            "- El flujo reutiliza el último `channel_diagnosis` disponible y no recalcula métricas desde cero salvo que falten datos.",
             "- `legacy_gaming` y `tarkov_directo` se conservan como soporte táctico, no como dirección editorial.",
             "- Las acciones marcadas como `inferida` parten de señales reales de views, retención, watch time o engagement, pero la decisión exacta de título/miniatura no viene directamente de la API.",
             "- No se ha usado Google Custom Search en este flujo.",
+            "- Si faltan métricas de impresiones o CTR, las decisiones de empaquetado se apoyan en retención, views por día, watch time y engagement reciente.",
         ]
     )
     return "\n".join(lines) + "\n"
