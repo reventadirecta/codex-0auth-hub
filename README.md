@@ -156,6 +156,60 @@ Use a specific diagnosis date:
 python -m scripts.channel_opportunities --date 2026-06-05
 ```
 
+Generate the video rewrite candidates analysis from the latest diagnosis and opportunities data:
+
+```powershell
+python -m scripts.video_rewrite_candidates
+```
+
+Use a specific diagnosis date:
+
+```powershell
+python -m scripts.video_rewrite_candidates --date 2026-06-05
+```
+
+Generate concrete rewrite proposals from the latest candidate analysis:
+
+```powershell
+python -m scripts.video_rewrite_proposals
+```
+
+Use a specific candidate date:
+
+```powershell
+python -m scripts.video_rewrite_proposals --date 2026-06-05
+```
+
+Discover competitor channels from the latest rewrite candidates:
+
+```powershell
+python -m scripts.competitor_discovery
+```
+
+Use a specific candidate date:
+
+```powershell
+python -m scripts.competitor_discovery --date 2026-06-05
+```
+
+This flow generates local competitor candidates to feed a later:
+
+```powershell
+python -m scripts.competitor_content_scan
+```
+
+Compare rewrite candidates against recent videos from curated competitors:
+
+```powershell
+python -m scripts.competitor_content_scan
+```
+
+Use a specific candidate date:
+
+```powershell
+python -m scripts.competitor_content_scan --date 2026-06-05
+```
+
 ## Current Constraints
 
 - Google Custom Search also needs a Programmable Search Engine ID in `engineId`.

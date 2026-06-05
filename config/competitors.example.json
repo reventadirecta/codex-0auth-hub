@@ -1,0 +1,17 @@
+{
+  "competitors": [
+    {
+      "id": "example-ai-local-channel",
+      "label": "Example Local AI Channel",
+      "channelId": "UCxxxxxxxxxxxxxxxxxxxxxx",
+      "channelUrl": "https://www.youtube.com/channel/UCxxxxxxxxxxxxxxxxxxxxxx",
+      "classification": "direct_competitor",
+      "priority": "A",
+      "topics": [
+        "ia_local",
+        "agentes_autonomos"
+      ],
+      "notes": "Example structure only. Copy real channels manually from competitor_discovery output."
+    }
+  ]
+}
