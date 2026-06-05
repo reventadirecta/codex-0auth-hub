@@ -222,6 +222,22 @@ python -m scripts.youtube_tag_intelligence
 
 This flow generates a local scored base of YouTube tags, hashtags, search phrases, and topic entities on a 1-100 scale without touching real videos.
 
+Content archive miner:
+
+```powershell
+python -m scripts.content_archive_miner
+```
+
+This flow generates a local archive audit of the channel history to decide what should stay public, what should be reviewed, what can be recycled, and what should be considered unlisted or private, without touching YouTube.
+
+Full archive reconciliation:
+
+```powershell
+python -m scripts.content_archive_miner --reconcile-inventory --studio-total 1861
+```
+
+This mode performs a broader inventory pass, compares the recovered uploads against Studio and the local datasets, and highlights gaps without assuming anything has been deleted.
+
 ## Current Constraints
 
 - Google Custom Search also needs a Programmable Search Engine ID in `engineId`.
