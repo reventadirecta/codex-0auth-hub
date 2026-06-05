@@ -2,6 +2,12 @@
 
 Local workspace for managing OAuth and API key connections across multiple Google services and accounts.
 
+This project was originally built to work with Codex as the primary autonomous coding agent. However, the architecture is intentionally local, file-based and command-driven, so it should also be reusable with other autonomous agents such as Hermes Agent, OpenClaw, Agent Zero, Claude Code, Aider, OpenHands, or any agent capable of reading files, running shell commands, and following project-specific prompts.
+
+The key idea is simple: the hub exposes a local, reusable OAuth/API layer for content workflows. Codex is the first target agent, not the only one.
+
+Codex was the first use case, but the system is designed for autonomous agents in general. The main logic does not depend on Codex-only internals: it lives in Python scripts, local configuration, `secrets/`, `tokens/`, and reproducible commands that another agent should also be able to use if it receives the right prompt and repository context.
+
 Everything stays inside this folder:
 
 ```text
