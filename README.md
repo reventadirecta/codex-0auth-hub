@@ -8,6 +8,10 @@ The key idea is simple: the hub exposes a local, reusable OAuth/API layer for co
 
 Codex was the first use case, but the system is designed for autonomous agents in general. The main logic does not depend on Codex-only internals: it lives in Python scripts, local configuration, `secrets/`, `tokens/`, and reproducible commands that another agent should also be able to use if it receives the right prompt and repository context.
 
+## Usage and configuration guide
+
+- [docs/USAGE.md](docs/USAGE.md)
+
 Everything stays inside this folder:
 
 ```text
